@@ -3,18 +3,16 @@ import React from 'react'
 
 import { connect} from 'react-redux'
 
-const Video = ({activeLesson,activeModule}) => (
+const Video = ({module}) => (
   <div>
-  <strong> Módulo {activeModule?.title ?? ""}</strong>
-  <span>Aula {activeLesson?.title  ?? ""}</span> 
+  <strong> Módulo {module?.activeModule?.title ?? ""}</strong>
+  <span>Aula {module?.activeLesson?.title  ?? ""}</span> 
 </div>
 
 )
 
-export default connect(state =>({
+const mapStateToProps = state => ({ module: state.lesson  })
 
-  activeLesson: state.course.activeLesson,
-  activeModule: state.course.activeModule,
 
-}))(Video)
+export default connect( mapStateToProps)(Video)
 //pega data do store

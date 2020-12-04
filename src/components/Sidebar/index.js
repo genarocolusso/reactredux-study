@@ -1,15 +1,15 @@
 import React from "react";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'; 
 // ver depois mas só funciona com o mesmo name das functions e actions
 
- import * as CourseActions from '../../store/actions/course'
+ import { Creators as LessonActions } from '../../store/ducks/lesson'
  //dispatch dispara actions pro redux
 const Sidebar = ({modules, toggleLesson}) => (
 
   <aside>
-  {modules.map(module=>(
+   
+  {modules?.map(module=>(
     <div key={module.id}>
       <strong> {module.title}</strong>
       <ul>
@@ -26,12 +26,16 @@ const Sidebar = ({modules, toggleLesson}) => (
 
 )
 
-const mapStateToProps = state => ({
-  modules: state.course.modules
-})
+const mapStateToProps = state => {
+  console.log(state)
+
+  return  {
+    modules: state.lesson.modules
+  } 
+}
 
 const mapDispatchToProps =  dispatch => ({
-  toggleLesson: (lesson, module) => dispatch(CourseActions.toggleLesson(lesson, module))
+  toggleLesson: (lesson, module) => dispatch(LessonActions.toggleLesson(lesson, module))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

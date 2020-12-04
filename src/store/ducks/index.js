@@ -1,11 +1,11 @@
 import { combineReducers} from  'redux'
 
-import course from './course'; 
+import lesson from './lesson'; 
 
 export default combineReducers({
-  course,
+  lesson,
 })
 
 // { course: { modules: [], activeLesson: {}} ,
 // user: {},
-//} etc.
+//} etc. 
